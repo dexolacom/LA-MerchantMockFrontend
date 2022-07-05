@@ -1,10 +1,10 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { Button } from '../theme';
 import { Wrapper, Content, InputsContainer, Input } from './styles';
 
 
-const Header = () => {
-  const [isUserInput, setIsUserInput] = useState(true)
+const Header = ({isUserLogged, setIsUserLogged}:{isUserLogged: boolean, setIsUserLogged: (b: boolean) => void}) => {
   const [userName, setUserName] = useState('')
   const [userData, setUserData] = useState({
     username: '',
@@ -18,19 +18,19 @@ const Header = () => {
   const saveUserData = () => {
     if (userData) {
       localStorage.setItem('userData', JSON.stringify(userData))
-      setIsUserInput(prevState => !prevState)
+      setIsUserLogged(prevState => !prevState)
     }
   };
 
   const deleteUserData = () => {
     localStorage.removeItem('userData')
-    setIsUserInput(prevState => !prevState)
+    setIsUserLogged(prevState => !prevState)
   };
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('userData') as string)
     setUserName(data?.username)
-  }, [isUserInput]);
+  }, [isUserLogged]);
 
   return (
     <Wrapper>
