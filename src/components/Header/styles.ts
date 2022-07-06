@@ -17,7 +17,7 @@ export const InputsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 `
 
 export const Input = styled.input`
