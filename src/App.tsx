@@ -4,8 +4,7 @@ import Content from './components/Content/Content';
 
 
 function App() {
-  const [isUserLogged, setIsUserLogged] = useState(true)
-
+  const [isUserLogged, setIsUserLogged] = useState(false)
 
   return (
     <div className="App">

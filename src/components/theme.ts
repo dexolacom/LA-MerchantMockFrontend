@@ -7,6 +7,7 @@ export const Button = styled.div<{background?: string, padding?: string}>`
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
+  text-align: center;
   
   &:hover {
     background-color: ${({background}) => background ?? '#de3838'};;
@@ -22,4 +23,5 @@ export const Title = styled.h1`
 export const Text = styled.p`
   color: #fff;
   font-size: 16px;
+  margin-bottom: 16px;
 `

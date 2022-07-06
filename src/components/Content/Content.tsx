@@ -1,11 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { Title, Text } from '../theme';
-import { Wrapper } from './styles';
+import { Title, Text, Button } from '../theme';
+import { Wrapper, Container } from './styles';
+import { ethers } from "ethers";
+import { LoginProps } from '../types';
 
 
-const Content = ({isUserLogged, setIsUserLogged}:{isUserLogged: boolean, setIsUserLogged: (b: boolean) => void}) => {
+const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
   const [isUserHasSubscriptions, setIsUserHasSubscriptions] = useState(false)
-  // const [isUserLogged, setIsUserLogged] = useState(false)
+  const [account, setAccount] = useState()
+
+  // const [metamaskData, setMetamaskData] = useState({
+  //   address: "",
+  //   balance: null,
+  // });
+
+
+  const getConnection = () => {
+    // @ts-ignore
+    if (window.ethereum) {
+      // @ts-ignore
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        // @ts-ignore
+        // .then((res) => accountChangeHandler(res[0]));
+        .then((res) => setAccount(res[0]));
+    } else {
+      alert("install metamask extension!");
+    }
+  };
+
+  // const getbalance = (address) => {
+  //
+  //   // Requesting balance method
+  //   window.ethereum
+  //     .request({
+  //       method: "eth_getBalance",
+  //       params: [address, "latest"]
+  //     })
+  //     .then((balance) => {
+  //       // Setting balance
+  //       setdata({
+  //         Balance: ethers.utils.formatEther(balance),
+  //       });
+  //     });
+  // };
+
+  // const accountChangeHandler = (account) => {
+  //   setMetamaskData({
+  //     address: account,
+  //   });
+  // };
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('userData') as string)
@@ -28,14 +72,14 @@ const Content = ({isUserLogged, setIsUserLogged}:{isUserLogged: boolean, setIsUs
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum.
+          consequat.
         </Text>
       </>
       }
-
-
+      <Container>
+        <Text>Sign in with liquid access</Text>
+        <Button onClick={getConnection}>Connect wallet</Button>
+      </Container>
     </Wrapper>
   );
 };
