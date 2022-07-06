@@ -3,13 +3,12 @@ import { Title, Text, Button } from '../theme';
 import { Wrapper, Container } from './styles';
 // import { ethers } from "ethers";
 import { LoginProps } from '../types';
+import { showFrame } from '../frame';
 
 
 const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
-  const [isUserHasSubscriptions, setIsUserHasSubscriptions] = useState(false)
   const [isMetamaskConnected, setIsMetamaskConnected] = useState(false)
   const accountAddress = useState(JSON.parse(localStorage.getItem('account') as string))
-  // const [accountAddress, setAccountAddress] = useState()
 
   const getConnection = () => {
     // @ts-ignore
@@ -58,16 +57,17 @@ const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
 
   return (
     <Wrapper>
-      {isUserLogged ? (
-        isUserHasSubscriptions
-          ? <>
-            <Title>Your subscription</Title>
-            <Text>Plane and info about subscription (merchant info)
-              Do you want transform your subscribe to NFT?
-            </Text>
-          </>
-          : <Title>You have no current subscriptions</Title>
-        ) : <>
+      {isUserLogged ?
+        <>
+          <Title>Your subscription</Title>
+          <Text>Plane and info about subscription (merchant info).
+            Do you want transform your subscribe to NFT?
+          </Text>
+          <Container>
+            <Button onClick={() => showFrame()}>Transform to NFT</Button>
+          </Container>
+        </>
+        : <>
         <Title>Content of merchant</Title>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -76,20 +76,6 @@ const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
         </Text>
       </>
       }
-      {accountAddress
-        ? <Container>
-          <Text>{accountAddress}</Text>
-          <Button>Wallet connected</Button>
-        </Container>
-        : <Container>
-          <Text>Sign in with liquid access</Text>
-          <Button onClick={getConnection}>Connect wallet</Button>
-        </Container>
-      }
-      {/*<Container>*/}
-      {/*  <Text>Sign in with liquid access</Text>*/}
-      {/*  <Button onClick={getConnection}>Connect wallet</Button>*/}
-      {/*</Container>*/}
     </Wrapper>
   );
 };

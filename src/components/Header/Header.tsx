@@ -48,20 +48,6 @@ const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
              <Button onClick={saveUserData}>Sign In</Button>
            </InputsContainer>
         }
-
-        {/*{userName*/}
-        {/*  ?*/}
-        {/*  <InputsContainer>*/}
-        {/*    <span>{userName}</span>*/}
-        {/*    <Button onClick={deleteUserData}>Logout</Button>*/}
-        {/*  </InputsContainer>*/}
-        {/*  :*/}
-        {/*  <InputsContainer>*/}
-        {/*    <Input name='username' placeholder='login' onChange={inputHandler}/>*/}
-        {/*    <Input name='password' placeholder='password' onChange={inputHandler}/>*/}
-        {/*    <Button onClick={saveUserData}>Sign In</Button>*/}
-        {/*  </InputsContainer>*/}
-        {/*}*/}
       </Content>
     </Wrapper>
   );
