@@ -1,21 +1,14 @@
 
 
 export const showFrame = () => {
-  const root = document.getElementById('root')
-  const modalElement = `
+  const modal = document.createElement('div')
+  modal.innerHTML = `
     <div class='backdrop'>
       <div class='modal'>
         <span>Hello world</span>
       </div>
     </div>
   `
-  console.log(root);
 
-  // return `
-  //   <div class='backdrop'>
-  //     <div class='modal'>
-  //       <span>Hello world</span>
-  //     </div>
-  //   </div>
-  // `
+  document.body.appendChild(modal);
 };
