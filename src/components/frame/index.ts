@@ -2,9 +2,9 @@ import { frameStyles } from './styles';
 
 
 export const showFrame = () => {
-  if (document.getElementById('frame-modal')) {
-    return
-  }
+  // if (document.getElementById('frame-modal')) {
+  //   return
+  // }
   const modal = document.createElement('div')
   modal.innerHTML = `
     <div class='frame-modal' id='frame-modal'>
@@ -23,9 +23,11 @@ export const setStyles = (stylesObject: object) => {
   Object.entries(stylesObject).forEach(([key]) => {
     // @ts-ignore
     const obj = JSON.stringify(stylesObject[key], null, "\t")
+      .replace(/([A-Z])/g, "-$1").toLowerCase()
       .replace(/"/g, "")
       .replace(/,\n/g, ";")
       .replace(/\}/g, ";}");
+    // @ts-ignore
     arr.push(`.${key}${obj}`)
   });
 
