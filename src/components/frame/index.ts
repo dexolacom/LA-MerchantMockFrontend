@@ -41,6 +41,7 @@ import { frameStyles } from './styles';
 // }
 
 export const showFrame = () => {
+  // maybe add links with arguments?
   if (document.getElementById('la-frame')) return
   const frame = document.createElement('div')
   frame.innerHTML = `<div id="la-frame" class='la-frame'></div>`
@@ -49,8 +50,8 @@ export const showFrame = () => {
   if (document.getElementById('la-frame')) {
     const link = document.createElement('link')
     const script = document.createElement('script')
-    link.setAttribute('href', './widget/index.css')
     link.setAttribute('rel', 'stylesheet')
+    link.setAttribute('href', './widget/index.css')
     script.setAttribute('src', './widget/index.js')
     document.body.append(link, script)
   }
