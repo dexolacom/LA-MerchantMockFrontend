@@ -2,18 +2,42 @@ import { frameStyles } from './styles';
 
 
 export const showFrame = () => {
-  // if (document.getElementById('frame-modal')) {
-  //   return
-  // }
+  // JSON.parse(localStorage.getItem('account') as string)
+  if (document.getElementById('frame-modal')) return
   const modal = document.createElement('div')
+
+  const toggleHtml = () => {
+    // @ts-ignore
+    document.getElementById('frame-modal').style.display='none';
+    // @ts-ignore
+    document.getElementById('frame-modal-nft').style.display='block'
+  };
+
   modal.innerHTML = `
     <div class='frame-modal' id='frame-modal'>
       <span class='frame-text'>Sign in with liquid access</span>
-      <button class='frame-button'>Connect wallet</button>
+      <div>
+        <button id='frame-button' class='frame-button'>Connect wallet</button>
+      </div>
+    </div>
+    <div class='frame-modal' id='frame-modal-nft' style='display: none'>
+      <div class='frame-text'>Your subscribe 1 NFT</div>
+      <div class='frame-text'>NFT merchant 1</div>
+      <button id='frame-button' class='frame-button'>Confirm</button>
     </div>
   `
   document.body.appendChild(modal);
   setStyles(frameStyles)
+
+  // @ts-ignore
+  document.getElementById('frame-button').addEventListener("click", () => toggleHtml(), {once: true});
+  // @ts-ignore
+  // document.getElementById('frame-button').removeAttribute("onclick");
+
+  // // @ts-ignore
+  // document.getElementById("frame-button").addEventListener("click", () => getWalletConnection());
+  // // @ts-ignore
+  // document.getElementById("frame-button").removeEventListener("click", () => getWalletConnection());
 }
 
 export const setStyles = (stylesObject: object) => {
@@ -35,4 +59,20 @@ export const setStyles = (stylesObject: object) => {
   const frag = range.createContextualFragment(res);
   // @ts-ignore
   document.querySelector("head").append(frag);
+};
+
+const getWalletConnection = () => {
+  // @ts-ignore
+  if (window.ethereum) {
+    // @ts-ignore
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      // @ts-ignore
+      // .then((res) => accountChangeHandler(res[0]));
+      .then((res) => {
+        localStorage.setItem('accountAddress', JSON.stringify(res[0]))
+      });
+  } else {
+    alert("install metamask extension!");
+  }
 };

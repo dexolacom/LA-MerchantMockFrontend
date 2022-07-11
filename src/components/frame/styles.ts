@@ -13,13 +13,12 @@ export const frameStyles = {
     color: '#fff',
     cursor: 'pointer',
     textAlign: 'center',
-    border: 'none'
+    border: 'none',
+    marginTop: '20px'
   },
   'frame-button:hover': {
     backgroundColor: '#de3838'
   },
   'frame-text': {
-    fontSize: '16px',
-    marginBottom: '16px'
-  }
+    fontSize: '16px', }
 }

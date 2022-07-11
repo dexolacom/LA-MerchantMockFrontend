@@ -1,33 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Title, Text, Button } from '../theme';
 import { Wrapper, Container } from './styles';
-// import { ethers } from "ethers";
 import { LoginProps } from '../types';
 import { showFrame } from '../frame';
 
 
 const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
-  const [isMetamaskConnected, setIsMetamaskConnected] = useState(false)
-  const accountAddress = useState(JSON.parse(localStorage.getItem('account') as string))
-
-  const getConnection = () => {
-    // @ts-ignore
-    if (window.ethereum) {
-      // @ts-ignore
-      window.ethereum
-        .request({ method: "eth_requestAccounts" })
-        // @ts-ignore
-        // .then((res) => accountChangeHandler(res[0]));
-        .then((res) => {
-          localStorage.setItem('accountAddress', JSON.stringify(res[0]))
-          setIsMetamaskConnected(true)
-          // setAccountAddress(res[0])
-        });
-    } else {
-      alert("install metamask extension!");
-    }
-  };
-
   // const getbalance = (address) => {
   //
   //   // Requesting balance method

@@ -81,3 +81,11 @@ select {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.button-widget {
+  width: 50%;
+  background-color: #606060;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 2px solid crimson;
+}
