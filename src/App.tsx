@@ -1,10 +1,15 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header/Header';
+import Content from './components/Content/Content';
+
 
 function App() {
+  const [isUserLogged, setIsUserLogged] = useState(false)
+
   return (
     <div className="App">
-      Hello world!
+      <Header isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
+      <Content isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
     </div>
   );
 }
