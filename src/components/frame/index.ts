@@ -51,8 +51,8 @@ export const showFrame = () => {
     const link = document.createElement('link')
     const script = document.createElement('script')
     link.setAttribute('rel', 'stylesheet')
-    link.setAttribute('href', './widget/index.css')
-    script.setAttribute('src', './widget/index.js')
+    link.setAttribute('href', './frame/index.css')
+    script.setAttribute('src', './frame/index.js')
     document.body.append(link, script)
   }
 };
