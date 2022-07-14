@@ -1,32 +1,11 @@
 import React, { useEffect } from 'react';
-import { Title, Text, Button } from '../theme';
+import { Title, Text, Button, Link } from '../theme';
 import { Wrapper, Container } from './styles';
 import { LoginProps } from '../types';
-import { showFrame } from '../frame';
+import { getUrl, urlParams } from '../utils';
 
 
 const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
-  // const getbalance = (address) => {
-  //
-  //   // Requesting balance method
-  //   window.ethereum
-  //     .request({
-  //       method: "eth_getBalance",
-  //       params: [address, "latest"]
-  //     })
-  //     .then((balance) => {
-  //       // Setting balance
-  //       setdata({
-  //         Balance: ethers.utils.formatEther(balance),
-  //       });
-  //     });
-  // };
-
-  // const accountChangeHandler = (account) => {
-  //   setMetamaskData({
-  //     address: account,
-  //   });
-  // };
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('userData') as string)
@@ -42,7 +21,7 @@ const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
             Do you want transform your subscribe to NFT?
           </Text>
           <Container>
-            <Button onClick={() => showFrame()}>Transform to NFT</Button>
+            <Link href={getUrl(urlParams)}>Transform to NFT</Link>
           </Container>
         </>
         : <>
