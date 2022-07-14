@@ -21,7 +21,7 @@ const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
             Do you want transform your subscribe to NFT?
           </Text>
           <Container>
-            <Link href={getUrl(urlParams)}>Transform to NFT</Link>
+            <Link href={getUrl(urlParams)} target='_blank'>Transform to NFT</Link>
           </Container>
         </>
         : <>
