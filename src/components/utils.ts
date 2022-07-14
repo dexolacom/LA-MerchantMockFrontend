@@ -10,5 +10,6 @@ const encryptParams = (str: string) => {
 
 export const getUrl = (urlParams: string) => {
   const encryptedId = encryptParams(urlParams)
-  return `https://la-dashboard.vercel.app/${encryptedId}`;
+  // return `http://localhost:3001/_*${encryptedId}`;
+  return `https://la-dashboard.vercel.app/_*${encryptedId}`;
 }
