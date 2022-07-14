@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Title, Text, Button } from '../theme';
+import { Title, Text, Button, Link } from '../theme';
 import { Wrapper, Container } from './styles';
 import { LoginProps } from '../types';
+import { getUrl, urlParams } from '../utils';
 
 
 const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
@@ -20,7 +21,7 @@ const Content:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
             Do you want transform your subscribe to NFT?
           </Text>
           <Container>
-            <Button>Transform to NFT</Button>
+            <Link href={getUrl(urlParams)}>Transform to NFT</Link>
           </Container>
         </>
         : <>
