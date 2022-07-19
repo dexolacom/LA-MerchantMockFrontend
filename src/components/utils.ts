@@ -1,7 +1,7 @@
 import AES from 'crypto-js/aes';
 import { enc } from 'crypto-js';
 
-const uid = () => Math.floor(Math.random() * 100)
+const uid = () => Math.floor(Math.random() * 101)
 
 export const urlParams = `merchant=test&userId=${uid()}&subscriptionId=${uid()}`
 
