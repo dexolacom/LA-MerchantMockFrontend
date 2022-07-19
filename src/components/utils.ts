@@ -1,7 +1,9 @@
 import AES from 'crypto-js/aes';
 import { enc } from 'crypto-js';
 
-export const urlParams = `merchant=test&userId=1&subscriptionId=3`
+const uid = () => Math.floor(Math.random() * 100)
+
+export const urlParams = `merchant=test&userId=${uid()}&subscriptionId=${uid()}`
 
 const encryptParams = (str: string) => {
   const ciphertext = AES.encrypt(str, 'secretPassphrase');
