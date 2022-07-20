@@ -3,7 +3,7 @@ import { enc } from 'crypto-js';
 
 const uid = () => Math.floor(Math.random() * 101)
 
-export const urlParams = `merchant=Merchant1&userId=${uid()}&subscriptionId=${uid()}`
+export const urlParams = `merchant=merchant1&userId=${uid()}&subscriptionId=${uid()}`
 
 const encryptParams = (str: string) => {
   const ciphertext = AES.encrypt(str, 'secretPassphrase');
