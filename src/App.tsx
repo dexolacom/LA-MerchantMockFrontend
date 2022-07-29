@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Header from './components/Header/Header';
-import Content from './components/Content/Content';
-
+import { Routes, Route } from 'react-router-dom';
+import PurchasePage from './pages/PurchasePage/PurchasePage';
+import NftsPage from './pages/NftsPage/NftsPage';
 
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(false)
@@ -9,7 +10,12 @@ function App() {
   return (
     <div className="App">
       <Header isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
-      <Content isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
+
+      <Routes>
+        <Route index element={<PurchasePage isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>} />
+        <Route path='/nfts' element={<NftsPage/>}/>
+      </Routes>
+
     </div>
   );
 }
