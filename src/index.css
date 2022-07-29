@@ -1,9 +1,9 @@
 body {
   margin: 0;
-  background-color: #161B22;
+  background-color: #171B32;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -80,4 +80,17 @@ select {
 .App {
   max-width: 1440px;
   margin: 0 auto;
+  color: #dee2ee;
+}
+
+.la-frame {
+  width: 50%;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 2px solid crimson;
+}
+
+.la-frame-content {
+  height: 100%;
 }

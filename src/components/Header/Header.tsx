@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '../theme';
-import { Wrapper, Content, InputsContainer, Input } from './styles';
+import { Button, Title } from '../theme';
+import { Wrapper, Content, InputsContainer, Input, RouterNavLink, TitleContainer } from './styles';
 import { LoginProps } from '../types';
 
 
@@ -29,14 +29,22 @@ const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('userData') as string)
-    setUserName(data?.username)
+    if (data) {
+      setUserName(data?.username)
+      setIsUserLogged(true)
+    }
   }, [isUserLogged]);
 
 
   return (
     <Wrapper>
       <Content>
-        <span>Merchant</span>
+        <TitleContainer>
+          <Title fontSize={'22px'} margin={0}>Awesome merchant</Title>
+          <RouterNavLink to='/'>Purchase</RouterNavLink>
+          <RouterNavLink to='/nfts'>Nfts</RouterNavLink>
+        </TitleContainer>
+
         {isUserLogged
           ? <InputsContainer>
             <span>{userName}</span>
