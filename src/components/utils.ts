@@ -17,6 +17,6 @@ export const getUrl = (activate?: string) => {
     return `https://la-dashboard.vercel.app/_*${encryptedLink}&activate`;
   }
 
-  // return `https://la-dashboard.vercel.app/_*${encryptedLink}&mint`;
-  return `http://localhost:3001/_*${encryptedLink}&mint`;
+  return `https://la-dashboard.vercel.app/_*${encryptedLink}&mint`;
+  // return `http://localhost:3001/_*${encryptedLink}&mint`;
 }
