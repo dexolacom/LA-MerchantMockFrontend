@@ -3,8 +3,6 @@ import AES from 'crypto-js/aes';
 const id = () => Math.floor(Math.random() * 1011)
 
 const encryptParams = (str: string) => {
-  // const ciphertext = AES.encrypt(str, 'secretPassphrase');
-  // return encodeURIComponent(ciphertext.toString());
   return AES.encrypt(JSON.stringify({ str }), 'secret').toString();
 }
 
