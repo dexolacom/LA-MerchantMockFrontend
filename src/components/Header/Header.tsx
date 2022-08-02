@@ -42,7 +42,7 @@ const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
         <TitleContainer>
           <Title fontSize={'22px'} margin={0}>Awesome merchant 1</Title>
           <RouterNavLink to='/'>Purchase</RouterNavLink>
-          <RouterNavLink to='/nfts'>Nfts</RouterNavLink>
+          {/*<RouterNavLink to='/nfts'>Nfts</RouterNavLink>*/}
         </TitleContainer>
 
         {isUserLogged
