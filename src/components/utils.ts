@@ -17,7 +17,7 @@ const cryptUrlParams = (key: string, text: string) => {
 export const getUrl = (activate?: string) => {
   let urlParams = `userId=${id()}&merchantId=1`
 
-  const encryptedLink = cryptUrlParams('95416a2f20bce2ca0391', urlParams)
+  const encryptedLink = cryptUrlParams('somesuncreatecargalaxyeasygovermentceleniumproduction', urlParams)
 
   if (activate) {
     return `https://la-dashboard.vercel.app/_*${encryptedLink}&activate`;
