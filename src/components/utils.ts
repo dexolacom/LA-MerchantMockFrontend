@@ -15,7 +15,11 @@ const cryptUrlParams = (key: string, text: string) => {
 };
 
 export const getUrl = (activate?: string) => {
-  let urlParams = `userId=${id()}&merchantId=1`
+  const currentDate = new Date()
+  const currentDatePlusTwoMouths = new Date(currentDate.setMonth(currentDate.getMonth()+2))
+  const linkExpiredDate = Math.floor(currentDatePlusTwoMouths.getTime() / 1000)
+
+  let urlParams = `userId=${id()}&merchantId=1&expirationDate=${linkExpiredDate}`
 
   const encryptedLink = cryptUrlParams('somesuncreatecargalaxyeasygovermentceleniumproduction', urlParams)
 
