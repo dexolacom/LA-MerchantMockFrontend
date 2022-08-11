@@ -16,3 +16,13 @@ export interface NftCardProps {
     type: string
   }
 }
+
+export interface BackdropProps {
+  children: JSX.Element[] | JSX.Element,
+  setIsModalOpen: (b: boolean) => void
+}
+
+export interface ModalProps {
+  setIsModalOpen: (b: boolean) => void
+  isLogin: boolean
+}

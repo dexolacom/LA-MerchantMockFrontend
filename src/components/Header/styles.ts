@@ -12,7 +12,7 @@ export const Content = styled.div`
   padding: 1em 2em;
 `
 
-export const InputsContainer = styled.div`
+export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
