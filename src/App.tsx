@@ -12,7 +12,9 @@ function App() {
       <Header isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
 
       <Routes>
-        <Route index element={<PurchasePage isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>} />
+        {/*<Route index element={<PurchasePage isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>} />*/}
+        {/*@ts-ignore*/}
+        <Route index element={<PurchasePage />} />
         <Route path='/nfts' element={<NftsPage/>}/>
       </Routes>
 

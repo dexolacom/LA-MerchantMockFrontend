@@ -16,7 +16,30 @@ const PurchasePage:React.FC<LoginProps> = ({ isUserLogged, setIsUserLogged }) =>
 
   return (
     <Wrapper>
-      {isUserLogged ?
+      {/*{isUserLogged ?*/}
+      {/*  isSubPurchased*/}
+      {/*    ? <>*/}
+      {/*      <Text margin='0 0 16px 0'>Subscription successfully purchased</Text>*/}
+      {/*      <Link href={getUrl()} target='_blank'>Transform to NFT</Link>*/}
+      {/*    </>*/}
+      {/*    : <>*/}
+      {/*      <LinkContainer>*/}
+      {/*        <Link href={getUrl('activate')} target='_blank'>Activate subscription with LA</Link>*/}
+      {/*      </LinkContainer>*/}
+      {/*      <Title margin={0} fontSize='22px'>Choose your plan</Title>*/}
+      {/*      /!*@ts-ignore*!/*/}
+      {/*      <Cards setIsSubPurchased={setIsSubPurchased}/>*/}
+      {/*    </>*/}
+      {/*  : <>*/}
+      {/*    <Title>Connect to our merchant</Title>*/}
+      {/*    <Text>*/}
+      {/*      To see the subscription plans you must be logged in, enter your username and password and click Sing In*/}
+      {/*      button*/}
+      {/*    </Text>*/}
+      {/*  </>*/}
+      {/*}*/}
+
+      {
         isSubPurchased
           ? <>
             <Text margin='0 0 16px 0'>Subscription successfully purchased</Text>
@@ -30,13 +53,6 @@ const PurchasePage:React.FC<LoginProps> = ({ isUserLogged, setIsUserLogged }) =>
             {/*@ts-ignore*/}
             <Cards setIsSubPurchased={setIsSubPurchased}/>
           </>
-        : <>
-          <Title>Connect to our merchant</Title>
-          <Text>
-            To see the subscription plans you must be logged in, enter your username and password and click Sing In
-            button
-          </Text>
-        </>
       }
     </Wrapper>
   );
