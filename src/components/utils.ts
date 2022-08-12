@@ -24,9 +24,9 @@ export const getUrl = (activate?: string) => {
   const encryptedLink = cryptUrlParams('somesuncreatecargalaxyeasygovermentceleniumproduction', urlParams)
 
   if (activate) {
-    return `https://la-dashboard.vercel.app/_*${encryptedLink}&activate`;
+    return `https://la-dashboard.netlify.app/_*${encryptedLink}&activate`;
   }
 
-  return `https://la-dashboard.vercel.app/_*${encryptedLink}&mint`;
+  return `https://la-dashboard.netlify.app/_*${encryptedLink}&mint`;
   // return `http://localhost:3000/_*${encryptedLink}&mint`;
 }
