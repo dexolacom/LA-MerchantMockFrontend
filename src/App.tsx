@@ -3,21 +3,21 @@ import Header from './components/Header/Header';
 import { Routes, Route } from 'react-router-dom';
 import PurchasePage from './pages/PurchasePage/PurchasePage';
 import NftsPage from './pages/NftsPage/NftsPage';
+import { AuthContext } from './contexts/AuthContext';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
-  const [isUserLogged, setIsUserLogged] = useState(false)
+  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <div className="App">
-      <Header isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
-
-      <Routes>
-        {/*<Route index element={<PurchasePage isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>} />*/}
-        {/*@ts-ignore*/}
-        <Route index element={<PurchasePage />} />
-        <Route path='/nfts' element={<NftsPage/>}/>
-      </Routes>
-
+      <AuthContext.Provider value={{isAuth, setIsAuth}}>
+        <Header/>
+        <Routes>
+          <Route index element={isAuth ? <PurchasePage/> : <HomePage/>} />
+          <Route path='/nfts' element={<NftsPage/>}/>
+        </Routes>
+      </AuthContext.Provider>
     </div>
   );
 }

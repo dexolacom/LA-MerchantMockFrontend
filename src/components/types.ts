@@ -1,6 +1,6 @@
 export interface LoginProps {
-  isUserLogged: boolean
-  setIsUserLogged: (b: boolean) => void
+  isAuth: boolean
+  setIsAuth: (b: boolean) => void
 }
 
 export interface CardProps {

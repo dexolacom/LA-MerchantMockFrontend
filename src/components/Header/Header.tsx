@@ -1,24 +1,16 @@
-import React, { useState } from 'react';
-import { Button, Title } from '../theme';
+import React, { useEffect, useState } from 'react';
+import { Button, Title, Text } from '../theme';
 import { Wrapper, Content, ButtonsContainer, TitleContainer } from './styles';
-import { LoginProps } from '../types';
 import Backdrop from '../Backdrop/Backdrop';
 import { LoginModal } from '../Modals/Modals';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 
-const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
+const Header:React.FC = () => {
+  const {isAuth, setIsAuth} = useAuthContext()
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const [isLogin, setIsLogin] = useState(false)
-
-  // const [userName, setUserName] = useState('')
-  // const [userData, setUserData] = useState({
-  //   username: '',
-  //   password: ''
-  // })
-  //
-  // const inputHandler = (event:React.ChangeEvent<HTMLInputElement>) => {
-  //   setUserData({...userData, [event.target.name]: event.target.value})
-  // };
+  const [login, setLogin] = useState('')
 
   // const saveUserData = () => {
   //   if (userData) {
@@ -27,18 +19,18 @@ const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
   //   }
   // };
   //
-  // const deleteUserData = () => {
-  //   localStorage.removeItem('userData')
-  //   setIsUserLogged(false)
-  // };
+  const deleteUserData = () => {
+    localStorage.removeItem('localUserData')
+    setIsAuth(false)
+  };
   //
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem('userData') as string)
-  //   if (data) {
-  //     setUserName(data?.username)
-  //     setIsUserLogged(true)
-  //   }
-  // }, [isUserLogged]);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('localUserData') as string)
+    if (data) {
+      setLogin(data?.login)
+      setIsAuth(true)
+    }
+  }, [isAuth]);
 
 
   return (
@@ -50,32 +42,26 @@ const Header:React.FC<LoginProps> = ({isUserLogged, setIsUserLogged}) => {
           {/*<RouterNavLink to='/nfts'>Nfts</RouterNavLink>*/}
         </TitleContainer>
 
-        {/*{isUserLogged*/}
-        {/*  ? <InputsContainer>*/}
-        {/*    <span>{userName}</span>*/}
-        {/*    <Button onClick={deleteUserData}>Logout</Button>*/}
-        {/*  </InputsContainer>*/}
-        {/*  : <InputsContainer>*/}
-        {/*     <Input name='username' placeholder='login' onChange={inputHandler}/>*/}
-        {/*     <Input name='password' placeholder='password' onChange={inputHandler}/>*/}
-        {/*     <Button onClick={saveUserData}>Sign In</Button>*/}
-        {/*   </InputsContainer>*/}
-        {/*}*/}
-
-        <ButtonsContainer>
-          <Button onClick={() => {
-            setIsLoginModalOpen(true)
-            setIsLogin(true)
-          }}>
-            Sing In
-          </Button>
-          <Button onClick={() => {
-            setIsLoginModalOpen(true)
-            setIsLogin(false)
-          }}>
-            Register
-          </Button>
-        </ButtonsContainer>
+        {isAuth
+          ? <ButtonsContainer>
+            <Text>{login}</Text>
+            <Button onClick={() => deleteUserData()}>Log out</Button>
+          </ButtonsContainer>
+          : <ButtonsContainer>
+              <Button onClick={() => {
+                setIsLoginModalOpen(true)
+                setIsLogin(true)
+              }}>
+                Sing In
+              </Button>
+              <Button onClick={() => {
+                setIsLoginModalOpen(true)
+                setIsLogin(false)
+              }}>
+                Register
+              </Button>
+            </ButtonsContainer>
+        }
 
         {isLoginModalOpen &&
           <Backdrop setIsModalOpen={setIsLoginModalOpen}>
