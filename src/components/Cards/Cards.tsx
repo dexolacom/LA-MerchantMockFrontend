@@ -22,12 +22,12 @@ const cardInfo = [
 
 
 // @ts-ignore
-const Cards:React.FC = ({ setIsSubPurchased }:{setIsSubPurchased: (b: boolean) => void}) => {
+const Cards:React.FC = () => {
   return (
     <>
       <CardsContainer>
         {cardInfo.map(({title, price, text}, index) => (
-          <Card key={index} title={title} price={price} text={text} setIsSubPurchased={setIsSubPurchased}/>
+          <Card key={index} title={title} price={price} text={text}/>
         ))}
       </CardsContainer>
     </>

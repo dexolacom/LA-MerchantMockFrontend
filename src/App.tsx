@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import { Routes, Route } from 'react-router-dom';
 import PurchasePage from './pages/PurchasePage/PurchasePage';
-import NftsPage from './pages/NftsPage/NftsPage';
+import PlansPage from './pages/PlansPage/PlansPage';
 import { AuthContext } from './contexts/AuthContext';
 import HomePage from './pages/HomePage/HomePage';
 
@@ -15,7 +15,7 @@ function App() {
         <Header/>
         <Routes>
           <Route index element={isAuth ? <PurchasePage/> : <HomePage/>} />
-          <Route path='/nfts' element={<NftsPage/>}/>
+          <Route path='/plans' element={isAuth ? <PlansPage/> : <HomePage/>}/>
         </Routes>
       </AuthContext.Provider>
     </div>
