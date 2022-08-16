@@ -6,8 +6,7 @@ import { getUrl } from '../utils';
 
 
 const PlanCard:React.FC<PlanCardProps> = ({card}) => {
-  const { NFT_id: NftId, package: packageName, expiration, is_activated_NFT: isActive } = card
-
+  const { NFT_id: nftId, package: packageName, expiration } = card
   // let expirationMonth = Math.floor((expiration % 31536000) / 2628000);
 
   return (
@@ -17,20 +16,28 @@ const PlanCard:React.FC<PlanCardProps> = ({card}) => {
           <Title fontSize='16px' margin='0'>Subscription plan:</Title>
           <Text color='#ffe34c'>{packageName}</Text>
         </FlexRow>
-        {NftId
+        {nftId
           ? <>
             <FlexRow margin='0 0 8px 0'>
               <Title fontSize='16px' margin='0'>Status:</Title>
-              <Text>{isActive ? 'activated' : 'not activated'}</Text>
+              <Text>activated</Text>
             </FlexRow>
             <FlexRow>
               <Title fontSize='16px' margin='0'>Term: </Title>
               <Text>2 months</Text>
             </FlexRow>
           </>
-          : <FlexRow>
-            <Link href={getUrl()} target='_blank'>Transform to NFT</Link>
-          </FlexRow>
+          :
+          <>
+            <FlexRow margin='0 0 8px 0'>
+              <Title fontSize='16px' margin='0'>Status:</Title>
+              <Text>not activated</Text>
+            </FlexRow>
+            <FlexRow>
+              <Link href={getUrl()} target='_blank'>Transform to NFT</Link>
+            </FlexRow>
+          </>
+
         }
 
       </Content>
