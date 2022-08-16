@@ -17,7 +17,7 @@ const PurchasePage:React.FC = () => {
   return (
     <Wrapper>
       <LinkContainer>
-        <Link href={getUrl('activate')} target='_blank'>Activate subscription with LA</Link>
+        <Link href={getUrl('activate')} target='_blank'>Activate/Deactivate subscription with LA</Link>
       </LinkContainer>
       <Title margin={0} fontSize='22px'>Choose your plan</Title>
       {/*@ts-ignore*/}
