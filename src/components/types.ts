@@ -14,6 +14,7 @@ export interface PlanCardProps {
     NFT_id: number
     package: string
     expiration: number
+    is_activated_NFT: boolean
   }
 }
 
