@@ -3,6 +3,7 @@ import { Title } from '../../components/theme';
 import { CardsContainer, Wrapper, CardsSection } from './styles';
 import PlanCard from '../../components/PlanCard/PlanCard';
 import { getUserPlans } from '../../requests';
+import Loader from '../../components/Loader/Loader';
 
 
 const PlansPage = () => {
@@ -12,18 +13,17 @@ const PlansPage = () => {
     getUserPlans().then(res => setCardsInfo(res))
   }, []);
 
+  const filteredByPackage = cardsInfo.filter(obj => {
+    // @ts-ignore
+    return obj?.package !== null;
+  });
+
   return (
     <Wrapper>
-      {/*<CardsSection>*/}
-      {/*  <Title fontSize='18px' margin='0 0 16px 0'>New nft subscription</Title>*/}
-      {/*  <CardsContainer>*/}
-      {/*    <PlanCard card={newCard}/>*/}
-      {/*  </CardsContainer>*/}
-      {/*</CardsSection>*/}
       <CardsSection>
-        <Title fontSize='18px'>Your subscription plans</Title>
+        <Title fontSize='18px'>{filteredByPackage.length ? 'Your subscription plans' : 'You havent subscription plans'}</Title>
         <CardsContainer>
-          {cardsInfo.map((card, index) => (
+          {filteredByPackage.map((card, index) => (
             <PlanCard card={card} key={index}/>
           ))}
         </CardsContainer>
