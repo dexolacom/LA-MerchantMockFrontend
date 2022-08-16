@@ -9,7 +9,10 @@ export const addNewUser = (userData: object, setIsModalOpen: (b: boolean) => voi
     .catch((error) => console.error(error))
 };
 
-export const authUser = (userData: {login: string, password: string}, setIsModalOpen: (b: boolean) => void, setIsAuth: (b: boolean) => void) => {
+export const authUser = (
+  userData: {login: string, password: string},
+  setIsModalOpen: (b: boolean) => void,
+  setIsAuth: (b: boolean) => void) => {
   // @ts-ignore
     return axios.get(`${baseUrl}/aloha/la/user/login/?login=${userData?.login}&password=${userData?.password}`)
   .then(response => {
@@ -28,3 +31,22 @@ export const authUser = (userData: {login: string, password: string}, setIsModal
   )
   .catch((error) => console.error(error))
 };
+
+
+export const getUserPlans = () => {
+  const userId = JSON.parse(localStorage.getItem('localUserData') as string)?.userId
+  return axios.get(`${baseUrl}/aloha/la/user/?user_id=${userId}`)
+    .then(res => res.data)
+    .catch(error => console.log(error.message))
+}
+
+// @ts-ignore
+export const addNewPlan = (packageName: string, navigate) => {
+  const userId = JSON.parse(localStorage.getItem('localUserData') as string)?.userId
+  return axios.post(`${baseUrl}/aloha/la/user/package`, {
+    'user_id': userId,
+    'package': packageName.toLowerCase()
+  })
+    .then(res => navigate('/plans'))
+    .catch(error => console.log(error.message))
+}

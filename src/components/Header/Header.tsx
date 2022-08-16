@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Title, Text } from '../theme';
-import { Wrapper, Content, ButtonsContainer, TitleContainer } from './styles';
+import { Wrapper, Content, ButtonsContainer, TitleContainer, RouterNavLink } from './styles';
 import Backdrop from '../Backdrop/Backdrop';
 import { LoginModal } from '../Modals/Modals';
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -12,18 +12,11 @@ const Header:React.FC = () => {
   const [isLogin, setIsLogin] = useState(false)
   const [login, setLogin] = useState('')
 
-  // const saveUserData = () => {
-  //   if (userData) {
-  //     localStorage.setItem('userData', JSON.stringify(userData))
-  //     setIsUserLogged(true)
-  //   }
-  // };
-  //
   const deleteUserData = () => {
     localStorage.removeItem('localUserData')
     setIsAuth(false)
   };
-  //
+
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('localUserData') as string)
     if (data) {
@@ -38,8 +31,8 @@ const Header:React.FC = () => {
       <Content>
         <TitleContainer>
           <Title fontSize={'22px'} margin={0}>Awesome merchant 1</Title>
-          {/*<RouterNavLink to='/'>Purchase</RouterNavLink>*/}
-          {/*<RouterNavLink to='/nfts'>Nfts</RouterNavLink>*/}
+          <RouterNavLink to='/'>Purchase</RouterNavLink>
+          <RouterNavLink to='/plans'>Your plans</RouterNavLink>
         </TitleContainer>
 
         {isAuth
