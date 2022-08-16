@@ -23,10 +23,10 @@ const PlanCard:React.FC<PlanCardProps> = ({card}) => {
               <Title fontSize='16px' margin='0'>Status:</Title>
               <Text>{isActive ? 'activated' : 'not activated'}</Text>
             </FlexRow>
-            {/*<FlexRow>*/}
-            {/*  <Title fontSize='16px' margin='0'>Term: </Title>*/}
-            {/*  <Text>{expirationMonth} months</Text>*/}
-            {/*</FlexRow>*/}
+            <FlexRow>
+              <Title fontSize='16px' margin='0'>Term: </Title>
+              <Text>2 months</Text>
+            </FlexRow>
           </>
           : <FlexRow>
             <Link href={getUrl()} target='_blank'>Transform to NFT</Link>
