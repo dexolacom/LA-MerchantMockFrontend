@@ -7,7 +7,6 @@ import { getUrl } from '../utils';
 
 const PlanCard:React.FC<PlanCardProps> = ({card}) => {
   const { NFT_id: nftId, package: packageName, expiration } = card
-  // let expirationMonth = Math.floor((expiration % 31536000) / 2628000);
 
   return (
     <Wrapper>
@@ -37,9 +36,7 @@ const PlanCard:React.FC<PlanCardProps> = ({card}) => {
               <Link href={getUrl()} target='_blank'>Transform to NFT</Link>
             </FlexRow>
           </>
-
         }
-
       </Content>
     </Wrapper>
   );

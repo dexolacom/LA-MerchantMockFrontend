@@ -15,7 +15,7 @@ const Card:React.FC<CardProps> = ({title, price, text, packageName}) => {
         <Text margin='0 0 16px 0'>{text}</Text>
         <Title fontSize='55px'>{price}</Title>
         {packageName === title.toLowerCase()
-          ? <Button color='#9c9c9c' background='#5a5a5a' cursor='auto'>Purchase</Button>
+          ? <Button color='#9c9c9c' background='#5a5a5a' cursor='auto'>Purchased</Button>
           : <Button onClick={() => addNewPlan(title, navigate)}>Purchase</Button>
         }
       </Content>
