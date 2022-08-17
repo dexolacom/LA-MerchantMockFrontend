@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Title, Text, Link } from '../../components/theme'
 import { Wrapper, LinkContainer } from './styles';
 import { getUrl } from '../../components/utils';

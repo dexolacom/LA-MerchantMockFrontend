@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 
-export const Button = styled.div<{background?: string, padding?: string}>`
+export const Button = styled.div<{background?: string, padding?: string, color?: string, cursor?: string}>`
   background-color: ${({background}) => background ?? '#317ccc'};
   padding: ${({padding}) => padding ?? '4px 16px'};
   border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
+  color: ${({color}) => color ?? '#fff'};
+  cursor: ${({cursor}) => cursor ?? 'pointer'};
   text-align: center;
   
   &:hover {
