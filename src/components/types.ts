@@ -7,6 +7,7 @@ export interface CardProps {
   title: string
   text: string
   price: string
+  packageName: string
 }
 
 export interface PlanCardProps {
