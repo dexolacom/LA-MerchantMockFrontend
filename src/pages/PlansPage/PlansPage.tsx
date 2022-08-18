@@ -9,6 +9,7 @@ const PlansPage = () => {
   const [cardsInfo, setCardsInfo] = useState([])
 
   useEffect(() => {
+    // @ts-ignore
     getUserPlans().then(res => setCardsInfo(res))
   }, []);
 
@@ -20,7 +21,7 @@ const PlansPage = () => {
   return (
     <Wrapper>
       <CardsSection>
-        <Title fontSize='18px'>{filteredCards.length ? 'Your subscription plans' : "You haven't subscription plans"}</Title>
+        <Title fontSize='18px'>{filteredCards?.length ? 'Your subscription plans' : "You haven't subscription plans"}</Title>
         <CardsContainer>
           {filteredCards.map((card, index) => (
             <PlanCard card={card} key={index}/>

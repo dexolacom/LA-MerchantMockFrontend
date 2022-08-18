@@ -35,9 +35,12 @@ export const authUser = (
 
 export const getUserPlans = () => {
   const userId = JSON.parse(localStorage.getItem('localUserData') as string)?.userId
-  return axios.get(`${baseUrl}/aloha/la/user/?user_id=${userId}`)
-    .then(res => res.data)
-    .catch(error => console.log(error.message))
+
+  if (userId) {
+    return axios.get(`${baseUrl}/aloha/la/user/?user_id=${userId}`)
+      .then(res => res.data)
+      .catch(error => console.log(error.message))
+  }
 }
 
 // @ts-ignore
