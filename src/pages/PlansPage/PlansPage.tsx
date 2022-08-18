@@ -14,7 +14,7 @@ const PlansPage = () => {
 
   const filteredCards = cardsInfo.filter(obj => {
     // @ts-ignore
-    return obj?.package !== null
+    return obj?.package !== null || obj?.is_activated_NFT
   });
 
   return (
