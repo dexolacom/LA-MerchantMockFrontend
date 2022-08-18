@@ -27,6 +27,7 @@ const Cards:React.FC = () => {
   const [packageName, setPackageName] = useState('')
 
   useEffect(() => {
+    // @ts-ignore
     getUserPlans().then(res => setPackageName(res[0]?.package))
   }, []);
 
