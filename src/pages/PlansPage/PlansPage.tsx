@@ -12,7 +12,7 @@ const PlansPage = () => {
     getUserPlans().then(res => setCardsInfo(res))
   }, []);
 
-  const filteredCards = cardsInfo.filter(obj => {
+  const filteredCards = cardsInfo?.filter(obj => {
     // @ts-ignore
     return obj?.package !== null || obj?.is_activated_NFT
   });
