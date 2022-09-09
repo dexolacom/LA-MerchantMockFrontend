@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 
 
 const PlansPage = () => {
-  const { data: cardsInfo } = useQuery(
+  const { data: cardsInfo, isLoading } = useQuery(
     'getPlans',
     () => getUserPlans(),
     {
@@ -22,7 +22,7 @@ const PlansPage = () => {
       <CardsSection>
         <Title fontSize='18px'>{cardsInfo?.length ? 'Your subscription plans' : "You haven't subscription plans"}</Title>
         <CardsContainer>
-          {cardsInfo.map((card: any, index: React.Key) => (
+          {!isLoading && cardsInfo.map((card: any, index: React.Key) => (
             <PlanCard card={card} key={index}/>
           ))}
         </CardsContainer>
