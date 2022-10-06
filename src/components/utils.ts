@@ -20,14 +20,14 @@ export const getUrl = (activate?: string) => {
   // expirationDate
   const currentDate = new Date()
   const currentDatePlusTwoMouths = new Date(currentDate.setMonth(currentDate.getMonth() + 2))
-  const linkExpiredDate = Math.floor(currentDatePlusTwoMouths.getTime() / 1000)
+  const expirationDate = Math.floor(currentDatePlusTwoMouths.getTime() / 1000)
 
   // timeToLive
   const currentTimePlusHour = new Date(new Date().setHours(currentDate.getHours() + 1))
   // @ts-ignore
   const timeToLive = (Date.parse(currentTimePlusHour)) / 1000
 
-  const urlParams = `userId=${userId}&merchantId=1&expirationDate=${linkExpiredDate}&ttl=${timeToLive}`
+  const urlParams = `userId=${userId}&merchantId=1&expirationDate=${expirationDate}&ttl=${timeToLive}`
   const encryptedLink = cryptUrlParams('somesuncreatecargalaxyeasygovermentceleniumproduction', urlParams)
 
   if (activate) {
