@@ -17,12 +17,17 @@ const cryptUrlParams = (key: string, text: string) => {
 
 export const getUrl = (activate?: string) => {
   const userId = JSON.parse(localStorage.getItem('localUserData') as string)?.userId
+  // expirationDate
   const currentDate = new Date()
-  const currentDatePlusTwoMouths = new Date(currentDate.setMonth(currentDate.getMonth()+2))
+  const currentDatePlusTwoMouths = new Date(currentDate.setMonth(currentDate.getMonth() + 2))
   const linkExpiredDate = Math.floor(currentDatePlusTwoMouths.getTime() / 1000)
 
-  let urlParams = `userId=${userId}&merchantId=1&expirationDate=${linkExpiredDate}`
+  // timeToLive
+  const currentTimePlusHour = new Date(new Date().setHours(currentDate.getHours() + 1))
+  // @ts-ignore
+  const timeToLive = (Date.parse(currentTimePlusHour)) / 1000
 
+  const urlParams = `userId=${userId}&merchantId=1&expirationDate=${linkExpiredDate}&ttl=${timeToLive}`
   const encryptedLink = cryptUrlParams('somesuncreatecargalaxyeasygovermentceleniumproduction', urlParams)
 
   if (activate) {
@@ -30,5 +35,4 @@ export const getUrl = (activate?: string) => {
   }
 
   return `https://la-dashboard.netlify.app/_*${encryptedLink}&mint`;
-  // return `http://localhost:3000/_*${encryptedLink}&mint`;
 }
